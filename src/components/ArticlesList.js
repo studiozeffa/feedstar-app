@@ -5,12 +5,19 @@ import ArticleListItem from './ArticlesListItem';
 import ArticleListItemSeparator from './ArticlesListItemSeparator';
 
 class ArticlesList extends Component {
+  constructor() {
+    super();
+
+    this.renderItem = this.renderItem.bind(this);
+  }
+
   keyExtractor(item) {
     return item.url;
   }
 
   renderItem({ item }) {
-    return <ArticleListItem article={item} />;
+    const { onArticleSelected } = this.props;
+    return <ArticleListItem article={item} onArticleSelected={onArticleSelected} />;
   }
 
   render() {

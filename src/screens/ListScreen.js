@@ -8,8 +8,20 @@ class ListScreen extends Component {
     title: 'BBC News'
   };
 
+  constructor() {
+    super();
+
+    this.navigateToDetailScreen = this.navigateToDetailScreen.bind(this);
+  }
+
+  navigateToDetailScreen(article) {
+    this.props.navigation.navigate('Detail', {
+      article
+    });
+  }
+
   render() {
-    return <ArticlesList articles={articles} />;
+    return <ArticlesList articles={articles} onArticleSelected={this.navigateToDetailScreen} />;
   }
 }
 

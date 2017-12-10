@@ -3,11 +3,13 @@ import { Platform } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 import ListScreen from './screens/ListScreen';
+import DetailScreen from './screens/DetailScreen';
 import { colors } from './theme';
 
 export default StackNavigator(
   {
-    List: { screen: ListScreen }
+    List: { screen: ListScreen },
+    Detail: { screen: DetailScreen }
   },
   {
     cardStyle: {
