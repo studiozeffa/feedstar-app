@@ -1,10 +1,12 @@
 import { Constants } from 'expo';
-import { Platform } from 'react-native';
+import { Platform, StatusBar } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 import ListScreen from './screens/ListScreen';
 import DetailScreen from './screens/DetailScreen';
 import { colors } from './theme';
+
+StatusBar.setBarStyle('light-content');
 
 export default StackNavigator(
   {
@@ -17,6 +19,7 @@ export default StackNavigator(
     },
     navigationOptions: {
       headerStyle: {
+        backgroundColor: colors.primary,
         // Nudge the header down on Android.
         ...Platform.select({
           android: {
@@ -24,7 +27,8 @@ export default StackNavigator(
             height: Constants.statusBarHeight + 56
           }
         })
-      }
+      },
+      headerTintColor: colors.white
     }
   }
 );

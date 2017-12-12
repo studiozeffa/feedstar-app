@@ -6,6 +6,8 @@ const platform = {
 };
 
 const colors = {
+  primary: '#d35400',
+
   white: '#fff',
   concrete: '#f2f2f2',
   dove: '#6c6c6c'
