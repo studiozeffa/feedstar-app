@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { getArticlesSelector, actionCreators } from '../store/articles';
 import ArticlesList from '../components/ArticlesList';
+import ArticlesLoading from '../components/ArticlesLoading';
 
 class ListScreen extends Component {
   static navigationOptions = {
@@ -27,6 +28,10 @@ class ListScreen extends Component {
   }
 
   render() {
+    if (!this.props.articles.length) {
+      return <ArticlesLoading />;
+    }
+
     return <ArticlesList articles={this.props.articles} onArticleSelected={this.navigateToDetailScreen} />;
   }
 }
