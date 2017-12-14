@@ -1,10 +1,13 @@
-import articles from '../data/articles.json';
+import { getAllArticles } from '../data/api';
 
 const FETCH_ARTICLES_SUCCESS = '[Articles] Fetch Success';
 
 const fetchArticles = () => {
   return dispatch => {
-    dispatch(fetchArticlesSuccess(articles));
+    getAllArticles().then(articles => {
+      console.log(articles);
+      dispatch(fetchArticlesSuccess(articles));
+    });
   };
 };
 

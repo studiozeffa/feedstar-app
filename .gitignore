@@ -9,6 +9,9 @@
 # dependencies
 /node_modules
 
+# config
+src/config.js
+
 # misc
 .env.local
 .env.development.local
