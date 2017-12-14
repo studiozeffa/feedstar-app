@@ -5,7 +5,6 @@ const FETCH_ARTICLES_SUCCESS = '[Articles] Fetch Success';
 const fetchArticles = () => {
   return dispatch => {
     getAllArticles().then(articles => {
-      console.log(articles);
       dispatch(fetchArticlesSuccess(articles));
     });
   };
