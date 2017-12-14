@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { fontSizes, dimensions, lineHeights, colors } from '../theme';
 
 const GUTTER = dimensions.basePadding / 2;
 
-const ArticleDetail = ({ article }) => (
+const ArticleDetail = ({ article, readMore }) => (
   <View style={styles.container}>
     <View style={styles.imageContainer}>
       <Image style={styles.image} source={{ uri: article.urlToImage }} />
@@ -13,6 +13,9 @@ const ArticleDetail = ({ article }) => (
       <Text style={styles.title}>{article.title}</Text>
       <View style={styles.separator} />
       <Text style={styles.description}>{article.description}</Text>
+      <TouchableOpacity style={styles.readMoreButton} onPress={readMore}>
+        <Text style={styles.readMoreButtonText}>Read More</Text>
+      </TouchableOpacity>
     </View>
   </View>
 );
@@ -42,10 +45,17 @@ const styles = StyleSheet.create({
     lineHeight: lineHeights.normal,
     padding: GUTTER
   },
-
   separator: {
     backgroundColor: colors.concrete,
     height: 1,
     margin: GUTTER
+  },
+  readMoreButton: {
+    margin: GUTTER,
+    paddingVertical: GUTTER
+  },
+  readMoreButtonText: {
+    color: colors.primary,
+    fontSize: fontSizes.normal
   }
 });
