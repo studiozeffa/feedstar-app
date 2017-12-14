@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getArticlesSelector } from '../store/articles';
+import { getArticlesSelector, actionCreators } from '../store/articles';
 import ArticlesList from '../components/ArticlesList';
 
 class ListScreen extends Component {
@@ -14,6 +14,10 @@ class ListScreen extends Component {
     super();
 
     this.navigateToDetailScreen = this.navigateToDetailScreen.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchArticles();
   }
 
   navigateToDetailScreen(article) {
@@ -31,4 +35,8 @@ const mapStateToProps = state => ({
   articles: getArticlesSelector(state)
 });
 
-export default connect(mapStateToProps)(ListScreen);
+const mapDispatchToProps = dispatch => ({
+  fetchArticles: () => dispatch(actionCreators.fetchArticles())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListScreen);
