@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
-import { dimensions, colors, fontSizes } from '../theme';
+import Icon from '@expo/vector-icons/Ionicons';
+
+import { dimensions, colors, fontSizes, platform } from '../theme';
 import ArticlePublishTimeAgo from './ArticlePublishTimeAgo';
 
 class ArticlesListItem extends Component {
@@ -21,10 +23,13 @@ class ArticlesListItem extends Component {
     return (
       <TouchableHighlight underlayColor={colors.dove} onPress={this.handlePress}>
         <View style={styles.container}>
-          <Text style={styles.title} numberOfLines={1} ellipsizeMode={'tail'}>
-            {article.title}
-          </Text>
-          <ArticlePublishTimeAgo style={styles.publishedAt} publishDate={article.publishedAt} />
+          <View style={styles.titleContainer}>
+            <Text style={styles.title} numberOfLines={1} ellipsizeMode={'tail'}>
+              {article.title}
+            </Text>
+            <ArticlePublishTimeAgo style={styles.publishedAt} publishDate={article.publishedAt} />
+          </View>
+          {platform.isIOS && <Icon style={styles.accessory} name="ios-arrow-forward" />}
         </View>
       </TouchableHighlight>
     );
@@ -36,7 +41,12 @@ export default ArticlesListItem;
 const styles = StyleSheet.create({
   container: {
     padding: dimensions.basePadding,
-    backgroundColor: colors.white
+    backgroundColor: colors.white,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  titleContainer: {
+    flex: 1
   },
   title: {
     fontSize: fontSizes.normal
@@ -45,5 +55,10 @@ const styles = StyleSheet.create({
     paddingTop: dimensions.basePadding / 4,
     color: colors.dove,
     fontSize: fontSizes.small
+  },
+  accessory: {
+    fontSize: fontSizes.large,
+    color: colors.silver,
+    marginLeft: dimensions.basePadding
   }
 });
