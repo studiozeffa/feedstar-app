@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { fontSizes, dimensions, lineHeights, colors } from '../theme';
+import ArticlePublishTimeAgo from './ArticlePublishTimeAgo';
 
 const GUTTER = dimensions.basePadding / 2;
 
@@ -11,6 +12,7 @@ const ArticleDetail = ({ article, readMore }) => (
     </View>
     <View style={styles.textContent}>
       <Text style={styles.title}>{article.title}</Text>
+      <ArticlePublishTimeAgo style={styles.publishedAt} publishDate={article.publishedAt} />
       <View style={styles.separator} />
       <Text style={styles.description}>{article.description}</Text>
       <TouchableOpacity style={styles.readMoreButton} onPress={readMore}>
@@ -39,6 +41,12 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.large,
     lineHeight: lineHeights.large,
     padding: GUTTER
+  },
+  publishedAt: {
+    fontSize: fontSizes.normal,
+    color: colors.dove,
+    padding: GUTTER,
+    paddingTop: GUTTER / 2
   },
   description: {
     fontSize: fontSizes.normal,

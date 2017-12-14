@@ -18,6 +18,7 @@ const dimensions = {
 };
 
 const fontSizes = {
+  small: 14,
   normal: 16,
   large: 18
 };

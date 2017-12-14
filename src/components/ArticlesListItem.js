@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { dimensions, colors, fontSizes } from '../theme';
+import ArticlePublishTimeAgo from './ArticlePublishTimeAgo';
 
 class ArticlesListItem extends Component {
   constructor() {
@@ -23,6 +24,7 @@ class ArticlesListItem extends Component {
           <Text style={styles.title} numberOfLines={1} ellipsizeMode={'tail'}>
             {article.title}
           </Text>
+          <ArticlePublishTimeAgo style={styles.publishedAt} publishDate={article.publishedAt} />
         </View>
       </TouchableHighlight>
     );
@@ -38,5 +40,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: fontSizes.normal
+  },
+  publishedAt: {
+    paddingTop: dimensions.basePadding / 4,
+    color: colors.dove,
+    fontSize: fontSizes.small
   }
 });
