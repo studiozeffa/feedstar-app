@@ -5,7 +5,8 @@ import ArticlesList from '../components/ArticlesList';
 
 class ListScreen extends Component {
   static navigationOptions = {
-    title: 'BBC News'
+    title: 'BBC News',
+    headerBackTitle: 'Back'
   };
 
   constructor() {
