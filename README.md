@@ -3,7 +3,7 @@
 This is a newsfeed reader app built with [React Native](https://facebook.github.io/react-native/) and
 [Expo](https://expo.io/). It is intended to showcase the essential parts of a React Native app.
 
-![](./demo.gif)
+![](./demo-advanced.gif)
 
 ## Installation
 
@@ -19,6 +19,15 @@ This is a newsfeed reader app built with [React Native](https://facebook.github.
   * [Google Chrome](https://google.com/chrome/)
 * Clone this repository and `cd feedstar-app`
 * Run `yarn` to install dependencies.
+
+## API Key
+
+The app uses the [News API](https://newsapi.org/) service. In order to use the app, you first need to [register an account](https://newsapi.org/register), and you will be allocted an API Key.
+
+Once you have your API key:
+
+* Copy the file `src/config.example.js` to `src/config.js`
+* Replace the API Key in this file with your own API key.
 
 ## Running app
 
@@ -68,11 +77,6 @@ will cause the app on the device to be refreshed.
 Shaking the device will reveal the Developer Menu, where you can manually reload, enable remote debugging and inspect
 the component tree. Enabling remote JS debugging will open Google Chrome where you can step through your code and set
 breakpoints.
-
-## Extras
-
-This branch showcases the initial version of the app. Further concepts can be found in the
-[advanced](/../../tree/advanced) branch.
 
 ## License
 
