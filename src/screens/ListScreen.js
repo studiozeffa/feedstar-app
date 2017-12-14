@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import articles from '../data/articles.json';
+import { getArticlesSelector } from '../store/articles';
 import ArticlesList from '../components/ArticlesList';
 
 class ListScreen extends Component {
@@ -22,8 +23,12 @@ class ListScreen extends Component {
   }
 
   render() {
-    return <ArticlesList articles={articles} onArticleSelected={this.navigateToDetailScreen} />;
+    return <ArticlesList articles={this.props.articles} onArticleSelected={this.navigateToDetailScreen} />;
   }
 }
 
-export default ListScreen;
+const mapStateToProps = state => ({
+  articles: getArticlesSelector(state)
+});
+
+export default connect(mapStateToProps)(ListScreen);
